@@ -1,0 +1,340 @@
+aid: loops-so
+url: https://raw.githubusercontent.com/api-evangelist/loops-so/refs/heads/main/apis.yml
+apis:
+- aid: loops-so:loops-api
+  name: Loops API
+  tags:
+  - Email
+  - Marketing
+  - Transactional
+  - Contacts
+  - Campaigns
+  - Events
+  - SaaS
+  humanURL: https://loops.so/docs/api-reference/intro
+  properties:
+  - url: https://loops.so/docs/api-reference/intro
+    type: Documentation
+  - url: https://app.loops.so/openapi.yaml
+    type: OpenAPI
+  - url: https://app.loops.so/openapi.json
+    type: OpenAPI
+  - url: openapi/loops-openapi.yml
+    type: OpenAPI
+  description: The Loops API is a single REST API exposing every Loops resource —
+    contacts, contact properties, mailing lists, events, campaigns, email messages,
+    themes, components, transactional sends, uploads, suppressions, and dedicated
+    sending IPs. Base URL is https://app.loops.so/api/v1. Bearer-token authentication
+    with API keys generated in Settings → API. Defaults to 10 requests/second per
+    team with x-ratelimit-limit and x-ratelimit-remaining response headers; returns
+    HTTP 429 when exceeded. OpenAPI 3.1 spec published at app.loops.so/openapi.yaml.
+name: Loops
+tags:
+- Email
+- Marketing Email
+- Transactional Email
+- Email Automation
+- Email Campaigns
+- Email Workflows
+- Contacts
+- Audience Management
+- Events
+- Webhooks
+- SaaS
+- Developer Tools
+kind: contract
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+access: 3rd-Party
+common:
+- url: https://loops.so
+  type: Portal
+- url: https://loops.so/docs
+  name: Loops Docs
+  type: Documentation
+- url: https://loops.so/docs/api-reference/intro
+  name: API Reference
+  type: Documentation
+- url: https://app.loops.so/openapi.yaml
+  name: OpenAPI YAML
+  type: OpenAPI
+- url: https://app.loops.so/openapi.json
+  name: OpenAPI JSON
+  type: OpenAPI
+- url: https://loops.so/docs/quickstart
+  name: Quickstart
+  type: GettingStarted
+- url: https://loops.so/docs/webhooks
+  name: Webhooks
+  type: Webhooks
+- url: https://loops.so/docs/integrations
+  name: Integrations
+  type: Integrations
+- url: https://loops.so/pricing
+  name: Pricing
+  type: Pricing
+- url: https://loops.so/blog
+  type: Blog
+- url: https://loops.so/changelog
+  type: ChangeLog
+- url: https://loops.so/legal/terms
+  type: TermsOfService
+- url: https://loops.so/legal/privacy
+  type: PrivacyPolicy
+- url: https://loops.so/legal/security
+  type: Security
+- url: https://app.loops.so/register
+  name: Sign Up
+  type: SignUp
+- url: https://app.loops.so/login
+  name: Sign In
+  type: SignIn
+- url: https://twitter.com/loops_so
+  type: Twitter
+- url: https://www.linkedin.com/company/loops-so
+  type: LinkedIn
+- url: https://github.com/loops-so
+  name: Loops GitHub
+  type: GitHubOrganization
+- url: https://github.com/loops-so/loops-js
+  name: Loops JavaScript SDK
+  type: SDK
+- url: https://github.com/loops-so/loops-nuxt
+  name: Loops Nuxt SDK
+  type: SDK
+- url: https://github.com/loops-so/loops-php
+  name: Loops PHP SDK
+  type: SDK
+- url: https://github.com/loops-so/loops-rb
+  name: Loops Ruby SDK
+  type: SDK
+- url: https://github.com/loops-so/loops-go
+  name: Loops Go SDK
+  type: SDK
+- url: https://github.com/loops-so/cli
+  name: Loops CLI
+  type: Tool
+- url: https://github.com/loops-so/homebrew-tap
+  name: Loops Homebrew Tap
+  type: Tool
+- url: https://github.com/loops-so/skills
+  name: Loops Skills for Claude Code
+  type: Tool
+- url: https://github.com/loops-so/loops-nextjs
+  name: Loops Next.js Example
+  type: CodeExamples
+- url: https://www.npmjs.com/package/loops
+  name: loops on npm
+  type: Package
+- url: https://loops.so/pricing
+  data:
+  - id: free
+    name: Free
+    entries:
+    - geo: US
+      unit: 1
+      label: User
+      limit: 1
+      price: Free
+      metric: user
+      timeFrame: month
+      description: Free tier — no credit card required. Loops branding shown at the
+        bottom of emails.
+    elements:
+    - name: Up to 1,000 subscribed contacts
+    - name: Up to 4,000 sends per month (enough for weekly emails)
+    - name: All features included
+    - name: Transactional email at no extra charge
+    - name: Unlimited team seats
+    - name: Loops branding at the bottom of every email
+    description: Free to start. No credit card required.
+  - id: paid
+    name: Paid
+    entries:
+    - geo: US
+      unit: 1
+      label: User
+      limit: 1
+      price: Call
+      metric: user
+      timeFrame: month
+      description: Paid plans remove send limits and Loops branding. Pricing scales
+        by audience size and contact tier.
+    elements:
+    - name: Remove send limits
+    - name: Remove Loops branding from emails
+    - name: All features included
+    - name: Transactional email at no extra charge
+    - name: Unlimited team seats — never charged per seat
+    - name: Never charged per send
+    description: For teams sending beyond the free-tier limits.
+  - id: custom
+    name: Custom
+    entries:
+    - geo: US
+      unit: 1
+      label: User
+      limit: 1
+      price: Call
+      metric: user
+      timeFrame: month
+      description: Custom plans for high-volume senders and enterprise.
+    elements:
+    - name: Custom contact and send volumes
+    - name: Dedicated sending IPs
+    - name: Custom plan terms
+    description: Contact Loops for custom plans.
+  name: Plans
+  type: Plans
+- type: Authentication
+  data:
+  - name: Bearer Token
+    description: API keys are generated in the Loops dashboard under Settings → API
+      and passed via the Authorization header as Bearer tokens. Test keys with GET
+      /api-key.
+- type: RateLimits
+  data:
+  - name: Default API rate limit
+    description: 10 requests per second per team. Responses include x-ratelimit-limit
+      and x-ratelimit-remaining headers; HTTP 429 returned when exceeded.
+  - name: Webhook delivery rate limit
+    description: Webhooks deliver at a maximum of 10 events per second; excess events
+      are queued for subsequent delivery.
+- type: Webhooks
+  data:
+  - name: Webhook event categories
+    description: Contact events (contact.created, contact.unsubscribed, contact.deleted,
+      contact.mailingList.subscribed/unsubscribed); email send events (campaign.email.sent,
+      loop.email.sent, transactional.email.sent); email engagement (email.delivered,
+      email.opened, email.clicked, email.softBounced, email.hardBounced, email.unsubscribed,
+      email.resubscribed, email.spamReported); and testing.testEvent.
+  - name: Webhook signing
+    description: Each webhook carries Webhook-Id, Webhook-Timestamp, and Webhook-Signature
+      (HMAC-SHA256) headers. Verify by recomputing the signature from event ID, timestamp,
+      and raw body using the signing secret saved during webhook setup.
+  - name: Webhook schema version
+    description: Webhooks include webhookSchemaVersion 1.0.0, eventName, and eventTime
+      (unix seconds). 30 days of delivery history is retained.
+- type: Integrations
+  data:
+  - name: Stripe
+    description: Sync Stripe customers to your Loops audience and trigger automated
+      emails on billing events.
+  - name: Supabase
+    description: Send Supabase authentication emails (magic links, password reset,
+      confirmations) through Loops.
+  - name: Clerk
+    description: Send Clerk authentication emails through Loops.
+  - name: Auth0
+    description: Route Auth0 authentication emails through Loops.
+  - name: Auth.js
+    description: Send Auth.js authentication emails through Loops.
+  - name: Better Auth
+    description: Route Better Auth transactional emails through Loops.
+  - name: PostHog
+    description: Sync PostHog events and identified users into Loops contacts and
+      workflows.
+  - name: Segment
+    description: Sync Segment events and identified users into Loops.
+  - name: RudderStack
+    description: Sync RudderStack events into Loops as event triggers.
+  - name: Fivetran
+    description: Sync data into Loops via Fivetran connectors.
+  - name: HubSpot
+    description: Sync HubSpot contacts to Loops.
+  - name: Salesforce
+    description: Sync Salesforce contacts to Loops.
+  - name: Attio
+    description: Sync Attio CRM contacts to Loops.
+  - name: Clay
+    description: Push contacts from Clay into Loops.
+  - name: Zapier
+    description: Connect Loops to 6,000+ apps via Zapier for contact sync, event triggers,
+      and email sends.
+  - name: Make
+    description: No-code automation flows that read from and write to Loops.
+  - name: Integrately
+    description: No-code integration platform for connecting Loops to other tools.
+  - name: Bubble
+    description: Send transactional email and sync contacts from Bubble no-code apps.
+  - name: Framer
+    description: Capture form submissions in Framer sites and add them to Loops.
+  - name: Webflow
+    description: Capture Webflow form submissions and add them to Loops contacts.
+  - name: Emailify
+    description: Import custom MJML email templates from Emailify into Loops.
+  - name: Email Love
+    description: Import MJML email templates from Email Love into Loops.
+  - name: Incoming Webhooks
+    description: Receive arbitrary HTTP payloads and turn them into Loops events.
+- type: Features
+  data:
+  - Unified platform for product, marketing, and transactional email built for software
+    companies
+  - Single REST API (OpenAPI 3.1 published at app.loops.so/openapi.yaml) covering
+    contacts, properties, mailing lists, events, campaigns, email messages, themes,
+    components, transactional, uploads, suppressions, and dedicated sending IPs
+  - Bearer-token API key authentication with a GET /api-key test endpoint
+  - 10 requests/second per team baseline rate limit with x-ratelimit-* response headers
+  - Contacts API — create, update, find, delete; manage suppression status
+  - Contact properties API — create custom properties and list the full property catalog
+  - Mailing lists API — list mailing lists and manage list membership via contact
+    updates
+  - Events API — POST /events/send to trigger loops (workflows) and personalize
+    content
+  - Campaigns API — full CRUD plus list, with separate endpoints for the email message
+    body
+  - Email message API — fetch and update the content of an individual email message
+    inside a campaign
+  - Themes and components API — read reusable themes and shared components used across
+    emails
+  - Transactional email API — send transactional emails with template variables, file
+    attachments, and headers; list transactional sends
+  - Uploads API — create and complete file uploads for use in transactional attachments
+  - Dedicated sending IPs API — list dedicated IPs assigned to your account
+  - Webhook system with HMAC-SHA256 signing, 30 days of delivery history, contact
+    + email + send + testing events, schema version 1.0.0
+  - Lifecycle workflows ("loops") with triggers, timers, branching, and conditional
+    logic
+  - Saved segments built from contact properties and engagement data
+  - A/B testing for campaigns
+  - Email design editor optimized for major email clients
+  - Analytics for conversion, opens, clicks, bounces, and unsubscribes
+  - Official SDKs for JavaScript/TypeScript, Nuxt, PHP, Ruby, and Go; community SDKs
+    for Laravel and Rails
+  - Official `loops` CLI (Go) with Homebrew tap distribution
+  - Official Claude Code Skills repository for the Loops API and CLI
+  - 25+ integrations across Stripe, Supabase, Clerk, Auth0, Auth.js, Better Auth,
+    PostHog, Segment, RudderStack, Fivetran, HubSpot, Salesforce, Attio, Clay, Zapier,
+    Make, Integrately, Bubble, Framer, Webflow, Emailify, and Email Love
+  - Transactional email included at no extra charge on every plan
+  - Unlimited team seats — never billed per seat or per send
+  sources:
+  - https://loops.so
+  - https://loops.so/docs/api-reference/intro
+  - https://app.loops.so/openapi.yaml
+  - https://loops.so/docs/webhooks
+  - https://loops.so/docs/integrations
+  - https://loops.so/pricing
+  - https://github.com/loops-so
+  updated: '2026-05-25'
+created: '2026-05-25T00:00:00.000Z'
+modified: '2026-05-25'
+position: Consuming
+description: Loops is a modern email platform purpose-built for software companies,
+  combining product, marketing, and transactional email behind a single REST API
+  and a single audience. Contacts, contact properties, mailing lists, events, segments,
+  campaigns, email messages, themes, components, uploads, transactional sends, and
+  dedicated sending IPs are all first-class API resources, with an OpenAPI 3.1 spec
+  published at app.loops.so/openapi.yaml. Lifecycle workflows ("loops") use the
+  Events API as their trigger, an HMAC-SHA256-signed webhook stream broadcasts every
+  contact and email event for real-time integrations, and official SDKs ship for
+  JavaScript, Nuxt, PHP, Ruby, and Go alongside an official Go-based CLI. Transactional
+  email is included on every plan, team seats are unlimited, and a generous free
+  tier covers 1,000 contacts and 4,000 sends per month — making Loops a Tier-1
+  developer-first email service for SaaS teams from waitlist to IPO.
+maintainers:
+- FN: Kin Lane
+  email: info@apievangelist.com
+  X: apievangelist
+  url: https://apievangelist.com
+specificationVersion: '0.16'
