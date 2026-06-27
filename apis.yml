@@ -84,10 +84,10 @@ common:
   type: Security
 - url: https://app.loops.so/register
   name: Sign Up
-  type: SignUp
+  type: Signup
 - url: https://app.loops.so/login
   name: Sign In
-  type: SignIn
+  type: Login
 - url: https://twitter.com/loops_so
   type: Twitter
 - url: https://www.linkedin.com/company/loops-so
@@ -97,28 +97,28 @@ common:
   type: GitHubOrganization
 - url: https://github.com/loops-so/loops-js
   name: Loops JavaScript SDK
-  type: SDK
+  type: SDKs
 - url: https://github.com/loops-so/loops-nuxt
   name: Loops Nuxt SDK
-  type: SDK
+  type: SDKs
 - url: https://github.com/loops-so/loops-php
   name: Loops PHP SDK
-  type: SDK
+  type: SDKs
 - url: https://github.com/loops-so/loops-rb
   name: Loops Ruby SDK
-  type: SDK
+  type: SDKs
 - url: https://github.com/loops-so/loops-go
   name: Loops Go SDK
-  type: SDK
+  type: SDKs
 - url: https://github.com/loops-so/cli
   name: Loops CLI
-  type: Tool
+  type: Tools
 - url: https://github.com/loops-so/homebrew-tap
   name: Loops Homebrew Tap
-  type: Tool
+  type: Tools
 - url: https://github.com/loops-so/skills
   name: Loops Skills for Claude Code
-  type: Tool
+  type: Tools
 - url: https://github.com/loops-so/loops-nextjs
   name: Loops Next.js Example
   type: CodeExamples

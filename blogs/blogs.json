@@ -3,9 +3,10 @@
   "feeds": [
     {
       "source": "https://loops.so/blog",
-      "error": "HTTPError"
+      "saved": 0,
+      "error": "HTTP 404 Not Found"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T12:53:02Z",
+  "post_count": 0
 }
