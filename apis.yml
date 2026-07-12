@@ -46,6 +46,10 @@ kind: contract
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
+- type: DomainSecurity
+  url: security/loops-so-domain-security.yml
+- type: Authentication
+  url: authentication/loops-so-authentication.yml
 - url: https://loops.so
   type: Portal
 - url: https://loops.so/docs
