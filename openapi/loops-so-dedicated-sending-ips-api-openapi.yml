@@ -1,0 +1,53 @@
+openapi: 3.1.0
+info:
+  title: Loops OpenAPI Spec API key Dedicated sending IPs API
+  description: This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).
+  version: 1.8.0
+servers:
+- url: https://app.loops.so/api/v1
+tags:
+- name: Dedicated sending IPs
+  description: View dedicated sending IP addresses
+paths:
+  /dedicated-sending-ips:
+    get:
+      tags:
+      - Dedicated sending IPs
+      summary: Get dedicated sending IP addresses
+      description: Retrieve a list of Loops' dedicated sending IP addresses.
+      responses:
+        '200':
+          description: Successful.
+          content:
+            application/json:
+              schema:
+                type: array
+                description: List of dedicated sending IP addresses
+                items:
+                  type: string
+                  description: IP address
+                  examples:
+                  - 1.2.3.4
+        '405':
+          description: Wrong HTTP request method.
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                required:
+                - success
+                - message
+      security:
+      - apiKey: []
+components:
+  securitySchemes:
+    apiKey:
+      type: http
+      scheme: bearer

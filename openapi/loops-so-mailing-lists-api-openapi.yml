@@ -1,0 +1,57 @@
+openapi: 3.1.0
+info:
+  title: Loops OpenAPI Spec API key Mailing lists API
+  description: This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).
+  version: 1.8.0
+servers:
+- url: https://app.loops.so/api/v1
+tags:
+- name: Mailing lists
+  description: View mailing lists
+paths:
+  /lists:
+    get:
+      tags:
+      - Mailing lists
+      summary: Get a list of mailing lists
+      description: Retrieve a list of your account's mailing lists.
+      responses:
+        '200':
+          description: Successful.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MailingList'
+        '405':
+          description: Wrong HTTP request method.
+      security:
+      - apiKey: []
+components:
+  schemas:
+    MailingList:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        isPublic:
+          type: boolean
+      examples:
+      - id: list_123
+        name: Main mailing list
+        description: Mailing list description
+        isPublic: true
+      required:
+      - id
+      - name
+      - description
+      - isPublic
+  securitySchemes:
+    apiKey:
+      type: http
+      scheme: bearer

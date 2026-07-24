@@ -1,0 +1,215 @@
+openapi: 3.1.0
+info:
+  title: Loops OpenAPI Spec API key Email messages API
+  description: This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).
+  version: 1.8.0
+servers:
+- url: https://app.loops.so/api/v1
+tags:
+- name: Email messages
+  description: Manage email message content for campaigns
+paths:
+  /email-messages/{emailMessageId}:
+    parameters:
+    - name: emailMessageId
+      in: path
+      required: true
+      description: The ID of the email message.
+      schema:
+        type: string
+    get:
+      tags:
+      - Email messages
+      summary: Get an email message
+      description: Retrieve an email message, including its compiled LMX content.
+      responses:
+        '200':
+          description: Successful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailMessageResponse'
+        '400':
+          description: Invalid `emailMessageId` or no sending domain configured.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailMessageFailureResponse'
+        '401':
+          description: Invalid API key or content API not enabled for this team.
+        '404':
+          description: Email message not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailMessageFailureResponse'
+        '405':
+          description: Wrong HTTP request method.
+        '409':
+          description: Email message uses MJML format or content cannot be parsed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailMessageFailureResponse'
+      security:
+      - apiKey: []
+    post:
+      tags:
+      - Email messages
+      summary: Update an email message
+      description: Update fields on an email message (subject, preview text, sender, LMX content). The campaign must be in draft status. Supply `expectedRevisionId` matching the current `contentRevisionId` — the server rejects mismatched revisions with 409.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateEmailMessageRequest'
+      responses:
+        '200':
+          description: Email message updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailMessageResponse'
+        '400':
+          description: Invalid request body.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailMessageFailureResponse'
+        '401':
+          description: Invalid API key or content API not enabled for this team.
+        '404':
+          description: Email message not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailMessageFailureResponse'
+        '405':
+          description: Wrong HTTP request method.
+        '409':
+          description: Campaign is not in draft status, `contentRevisionId` is stale, content cannot be parsed, or email message uses MJML format.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailMessageFailureResponse'
+        '413':
+          description: LMX payload exceeds the 100KB limit.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailMessageFailureResponse'
+        '422':
+          description: LMX failed to compile.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailMessageFailureResponse'
+      security:
+      - apiKey: []
+components:
+  schemas:
+    UpdateEmailMessageRequest:
+      type: object
+      properties:
+        expectedRevisionId:
+          type: string
+          description: The `contentRevisionId` you last fetched. Used for optimistic concurrency — the request is rejected with 409 if the server's revision has advanced.
+        subject:
+          type: string
+        previewText:
+          type: string
+        fromName:
+          type: string
+        fromEmail:
+          type: string
+          description: The sender username (without `@` or domain). The team's sending domain is appended automatically.
+        replyToEmail:
+          type: string
+          description: Reply-to email. Must be empty or a valid email address.
+        lmx:
+          type: string
+          description: The email body serialized as LMX. Styles must be embedded in the LMX `<Style />` tag.
+      additionalProperties: false
+    EmailMessageFailureResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - false
+        message:
+          type: string
+      required:
+      - success
+      - message
+    EmailMessageResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - true
+        emailMessageId:
+          type: string
+        campaignId:
+          type:
+          - string
+          - 'null'
+        subject:
+          type: string
+        previewText:
+          type: string
+        fromName:
+          type: string
+        fromEmail:
+          type: string
+        replyToEmail:
+          type: string
+        lmx:
+          type: string
+          description: The email body serialized as LMX.
+        contentRevisionId:
+          type:
+          - string
+          - 'null'
+          description: The current content revision. Pass this as `expectedRevisionId` on your next update.
+        updatedAt:
+          type: string
+          format: date-time
+        warnings:
+          type: array
+          description: Non-fatal issues raised while compiling the submitted LMX. Only present on update responses when warnings were produced.
+          items:
+            type: object
+            properties:
+              rule:
+                type: string
+              severity:
+                type: string
+                enum:
+                - warning
+              message:
+                type: string
+              path:
+                type: string
+            required:
+            - rule
+            - severity
+            - message
+      required:
+      - success
+      - emailMessageId
+      - campaignId
+      - subject
+      - previewText
+      - fromName
+      - fromEmail
+      - replyToEmail
+      - lmx
+      - contentRevisionId
+      - updatedAt
+  securitySchemes:
+    apiKey:
+      type: http
+      scheme: bearer

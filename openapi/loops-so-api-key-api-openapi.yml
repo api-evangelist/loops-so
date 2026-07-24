@@ -1,0 +1,61 @@
+openapi: 3.1.0
+info:
+  title: Loops OpenAPI Spec API key API
+  description: This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).
+  version: 1.8.0
+servers:
+- url: https://app.loops.so/api/v1
+tags:
+- name: API key
+paths:
+  /api-key:
+    get:
+      tags:
+      - API key
+      summary: Test your API key
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    examples:
+                    - true
+                  teamName:
+                    type: string
+                    description: The name of the team the API key belongs to.
+                    examples:
+                    - Company name
+                required:
+                - success
+                - teamName
+        '401':
+          description: Invalid API key
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    examples:
+                    - false
+                  message:
+                    type: string
+                    examples:
+                    - Invalid API key
+                  error:
+                    type: string
+                    examples:
+                    - Invalid API key
+      security:
+      - apiKey: []
+components:
+  securitySchemes:
+    apiKey:
+      type: http
+      scheme: bearer

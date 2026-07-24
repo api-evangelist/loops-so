@@ -1,0 +1,297 @@
+openapi: 3.1.0
+info:
+  title: Loops OpenAPI Spec API key Transactional emails API
+  description: This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).
+  version: 1.8.0
+servers:
+- url: https://app.loops.so/api/v1
+tags:
+- name: Transactional emails
+  description: Send and view transactional emails
+paths:
+  /transactional:
+    post:
+      tags:
+      - Transactional emails
+      summary: Send a transactional email
+      description: Send a transactional email to a contact.<br>Please [email us](mailto:help@loops.so) to enable attachments on your account before using them with the API.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionalRequest'
+        required: true
+      parameters:
+      - in: header
+        name: Idempotency-Key
+        description: Include a unique ID for this request (maximum 100 characters) to avoid duplicate emails. [More info](https://loops.so/docs/api-reference/send-transactional-email#param-idempotency-key)
+        schema:
+          type: string
+          maxLength: 100
+      responses:
+        '200':
+          description: Successful send.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionalSuccessResponse'
+        '400':
+          description: Bad request (e.g. transactional email is not published).
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/TransactionalFailureResponse'
+                - $ref: '#/components/schemas/TransactionalFailure2Response'
+                - $ref: '#/components/schemas/TransactionalFailure3Response'
+                - $ref: '#/components/schemas/TransactionalFailure4Response'
+                - $ref: '#/components/schemas/TransactionalFailure5Response'
+        '404':
+          description: Transactional email not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionalFailure3Response'
+        '405':
+          description: Wrong HTTP request method.
+        '409':
+          description: Idempotency key has been used.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdempotencyKeyFailureResponse'
+      security:
+      - apiKey: []
+    get:
+      tags:
+      - Transactional emails
+      summary: List transactional emails
+      description: Get a list of published transactional emails.
+      parameters:
+      - name: perPage
+        in: query
+        required: false
+        description: How many results to return in each request. Must be between 10 and 50. Default is 20.
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        required: false
+        description: A cursor, to return a specific page of results. Cursors can be found from the `pagination.nextCursor` value in each response.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTransactionalsResponse'
+        '405':
+          description: Wrong HTTP request method.
+      security:
+      - apiKey: []
+components:
+  schemas:
+    TransactionalFailureResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - false
+        message:
+          type: string
+      required:
+      - success
+      - message
+    ListTransactionalsResponse:
+      type: object
+      properties:
+        pagination:
+          type: object
+          properties:
+            totalResults:
+              type: number
+            returnedResults:
+              type: number
+            perPage:
+              type: number
+            totalPages:
+              type: number
+            nextCursor:
+              type:
+              - string
+              - 'null'
+            nextPage:
+              type:
+              - string
+              - 'null'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionalEmail'
+    TransactionalSuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - true
+      required:
+      - success
+    IdempotencyKeyFailureResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - false
+        message:
+          type: string
+      required:
+      - success
+      - message
+    TransactionalRequest:
+      type: object
+      required:
+      - email
+      - transactionalId
+      properties:
+        email:
+          type: string
+        transactionalId:
+          type: string
+          description: The ID of the transactional email to send.
+        addToAudience:
+          type: boolean
+          description: If `true`, a contact will be created in your audience using the `email` value (if a matching contact doesn't already exist).
+        dataVariables:
+          type: object
+          description: An object containing contact data as defined by the data variables added to the transactional email template.
+          examples:
+          - name: Chris
+            passwordResetLink: https://example.com/reset-password
+        attachments:
+          type: array
+          description: A list containing file objects to be sent along with an email message.
+          items:
+            type: object
+            required:
+            - filename
+            - contentType
+            - data
+            properties:
+              filename:
+                type: string
+                description: The name of the file, shown in email clients.
+              contentType:
+                type: string
+                description: The MIME type of the file.
+              data:
+                type: string
+                description: The base64-encoded content of the file.
+    TransactionalFailure3Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - false
+        message:
+          type: string
+        error:
+          type: object
+          properties:
+            path:
+              type: string
+            message:
+              type: string
+      required:
+      - success
+      - message
+      - error
+    TransactionalFailure4Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - false
+        message:
+          type: string
+        error:
+          type: object
+          properties:
+            path:
+              type: string
+            reason:
+              type: string
+      required:
+      - success
+      - message
+      - error
+    TransactionalFailure2Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - false
+        message:
+          type: string
+        path:
+          type: string
+      required:
+      - success
+      - message
+      - path
+    TransactionalEmail:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        lastUpdated:
+          type: string
+        dataVariables:
+          type: array
+      examples:
+      - id: cll42l54f20i1la0lfooe3z12
+        name: Sign up confirmation
+        lastUpdated: 2025-02-02 02:56:28.845000+00:00
+        dataVariables:
+        - confirmationUrl
+      required:
+      - id
+      - name
+      - lastUpdated
+      - dataVariables
+    TransactionalFailure5Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - false
+        message:
+          type: string
+        error:
+          type: object
+          properties:
+            path:
+              type: string
+            message:
+              type: string
+        transactionalId:
+          type: string
+      required:
+      - success
+      - message
+      - error
+      - transactionalId
+  securitySchemes:
+    apiKey:
+      type: http
+      scheme: bearer

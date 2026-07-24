@@ -1,0 +1,168 @@
+openapi: 3.1.0
+info:
+  title: Loops OpenAPI Spec API key Uploads API
+  description: This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).
+  version: 1.8.0
+servers:
+- url: https://app.loops.so/api/v1
+tags:
+- name: Uploads
+  description: Upload image assets
+paths:
+  /uploads:
+    post:
+      tags:
+      - Uploads
+      summary: Create an upload
+      description: Request a pre-signed URL to upload an image asset. Upload the file with an HTTP `PUT` to the returned `presignedUrl` (sending the same `Content-Type` and `Content-Length`), then call `/uploads/{id}/complete` to finalize the asset.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUploadRequest'
+      responses:
+        '200':
+          description: Pre-signed upload URL created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateUploadResponse'
+        '400':
+          description: Invalid request body or unsupported `contentType`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadFailureResponse'
+        '401':
+          description: Invalid API key or content API not enabled for this team.
+        '405':
+          description: Wrong HTTP request method.
+        '413':
+          description: Upload exceeds the maximum allowed size.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadFailureResponse'
+      security:
+      - apiKey: []
+  /uploads/{id}/complete:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      description: The `emailAssetId` returned when the upload was created.
+      schema:
+        type: string
+    post:
+      tags:
+      - Uploads
+      summary: Complete an upload
+      description: Finalize an asset after the file has been uploaded to the pre-signed URL. Returns the public URL of the uploaded asset.
+      responses:
+        '200':
+          description: Upload completed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompleteUploadResponse'
+        '400':
+          description: Upload id is missing or the uploaded file has an unsupported content type.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadFailureResponse'
+        '401':
+          description: Invalid API key or content API not enabled for this team.
+        '404':
+          description: Upload not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadFailureResponse'
+        '405':
+          description: Wrong HTTP request method.
+        '425':
+          description: Uploaded object not yet visible in storage. Retry shortly.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadFailureResponse'
+      security:
+      - apiKey: []
+components:
+  schemas:
+    CreateUploadRequest:
+      type: object
+      properties:
+        contentType:
+          type: string
+          description: The MIME type of the file to upload. Supported types are `image/jpeg`, `image/png`, `image/gif` and `image/webp`.
+          examples:
+          - image/png
+        contentLength:
+          type: integer
+          description: The size of the file in bytes. Must be a positive integer no greater than 4,000,000 bytes.
+          examples:
+          - 102400
+      required:
+      - contentType
+      - contentLength
+      additionalProperties: false
+    CreateUploadResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - true
+        emailAssetId:
+          type: string
+          description: The ID of the created asset. Pass this as `id` to `/uploads/{id}/complete` once the file has been uploaded.
+        presignedUrl:
+          type: string
+          description: The pre-signed URL to upload the file to with an HTTP `PUT` request. Send the same `Content-Type` and `Content-Length` used in the create request.
+      required:
+      - success
+      - emailAssetId
+      - presignedUrl
+    UploadFailureResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - false
+        message:
+          type: string
+        supportedContentTypes:
+          type: array
+          description: Present when the request was rejected for an unsupported `contentType`. Lists the accepted MIME types.
+          items:
+            type: string
+        maxBytes:
+          type: integer
+          description: Present when the upload exceeds the size limit. The maximum allowed size in bytes.
+      required:
+      - success
+      - message
+    CompleteUploadResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - true
+        emailAssetId:
+          type: string
+        finalUrl:
+          type: string
+          description: The public URL of the uploaded asset.
+      required:
+      - success
+      - emailAssetId
+      - finalUrl
+  securitySchemes:
+    apiKey:
+      type: http
+      scheme: bearer

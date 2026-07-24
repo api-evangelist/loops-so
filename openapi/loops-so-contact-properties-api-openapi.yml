@@ -1,0 +1,120 @@
+openapi: 3.1.0
+info:
+  title: Loops OpenAPI Spec API key Contact properties API
+  description: This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).
+  version: 1.8.0
+servers:
+- url: https://app.loops.so/api/v1
+tags:
+- name: Contact properties
+  description: Manage contact properties
+paths:
+  /contacts/properties:
+    post:
+      tags:
+      - Contact properties
+      summary: Create a contact property
+      description: Add a contact property to your team.
+      requestBody:
+        description: The name value must be in camelCase, like `planName`.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactPropertyCreateRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful create.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactPropertySuccessResponse'
+        '400':
+          description: Bad request (e.g. invalid type).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactPropertyFailureResponse'
+        '405':
+          description: Wrong HTTP request method.
+      security:
+      - apiKey: []
+    get:
+      tags:
+      - Contact properties
+      summary: Get a list of contact properties
+      description: Retrieve a list of your account's contact properties.<br>Use the `list` parameter to query "all" or "custom" properties.
+      parameters:
+      - name: list
+        in: query
+        required: false
+        description: \"all\" (default) or \"custom\"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContactProperty'
+        '405':
+          description: Wrong HTTP request method.
+      security:
+      - apiKey: []
+components:
+  schemas:
+    ContactPropertyFailureResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - false
+        message:
+          type: string
+      required:
+      - success
+      - message
+    ContactPropertyCreateRequest:
+      type: object
+      required:
+      - name
+      - type
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+    ContactPropertySuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - true
+      required:
+      - success
+    ContactProperty:
+      type: object
+      properties:
+        key:
+          type: string
+        label:
+          type: string
+        type:
+          type: string
+      examples:
+      - key: favoriteColor
+        label: Favorite color
+        type: string
+      required:
+      - key
+      - label
+      - type
+  securitySchemes:
+    apiKey:
+      type: http
+      scheme: bearer

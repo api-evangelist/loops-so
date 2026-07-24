@@ -1,0 +1,172 @@
+openapi: 3.1.0
+info:
+  title: Loops OpenAPI Spec API key Components API
+  description: This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).
+  version: 1.8.0
+servers:
+- url: https://app.loops.so/api/v1
+tags:
+- name: Components
+  description: View email components
+paths:
+  /components/{componentId}:
+    parameters:
+    - name: componentId
+      in: path
+      required: true
+      description: The ID of the component.
+      schema:
+        type: string
+    get:
+      tags:
+      - Components
+      summary: Get a component
+      description: Retrieve a single component by ID.
+      responses:
+        '200':
+          description: Successful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComponentResponse'
+        '400':
+          description: Invalid `componentId`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComponentFailureResponse'
+        '401':
+          description: Invalid API key or content API not enabled for this team.
+        '404':
+          description: Component not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComponentFailureResponse'
+        '405':
+          description: Wrong HTTP request method.
+      security:
+      - apiKey: []
+  /components:
+    get:
+      tags:
+      - Components
+      summary: List components
+      description: Retrieve a paginated list of email components.
+      parameters:
+      - name: perPage
+        in: query
+        required: false
+        description: How many results to return in each request. Must be between 10 and 50. Default is 20.
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        required: false
+        description: A cursor to return a specific page of results. Cursors can be found from the `pagination.nextCursor` value in each response.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListComponentsResponse'
+        '400':
+          description: Invalid `perPage` value.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComponentFailureResponse'
+        '401':
+          description: Invalid API key or content API not enabled for this team.
+        '405':
+          description: Wrong HTTP request method.
+      security:
+      - apiKey: []
+components:
+  schemas:
+    Component:
+      type: object
+      properties:
+        componentId:
+          type: string
+        name:
+          type: string
+        lmx:
+          type: string
+          description: The component body serialized as LMX.
+      required:
+      - componentId
+      - name
+      - lmx
+    ComponentResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - true
+        componentId:
+          type: string
+        name:
+          type: string
+        lmx:
+          type: string
+          description: The component body serialized as LMX.
+      required:
+      - success
+      - componentId
+      - name
+      - lmx
+    ListComponentsResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - true
+        pagination:
+          type: object
+          properties:
+            totalResults:
+              type: number
+            returnedResults:
+              type: number
+            perPage:
+              type: number
+            totalPages:
+              type: number
+            nextCursor:
+              type:
+              - string
+              - 'null'
+            nextPage:
+              type:
+              - string
+              - 'null'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Component'
+      required:
+      - success
+      - pagination
+      - data
+    ComponentFailureResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - false
+        message:
+          type: string
+      required:
+      - success
+      - message
+  securitySchemes:
+    apiKey:
+      type: http
+      scheme: bearer
