@@ -1,33 +1,138 @@
 aid: loops-so
 url: https://raw.githubusercontent.com/api-evangelist/loops-so/refs/heads/main/apis.yml
 apis:
-- aid: loops-so:loops-api
-  name: Loops API
-  tags:
-  - Email
-  - Marketing
-  - Transactional
-  - Contacts
-  - Campaigns
-  - Events
-  - SaaS
+- aid: loops-so:loops-so-api-key-api
+  name: Loops API key API
+  description: The API key API from Loops — 1 operation(s) for api key.
   humanURL: https://loops.so/docs/api-reference/intro
+  tags:
+  - API key
   properties:
-  - url: https://loops.so/docs/api-reference/intro
-    type: Documentation
-  - url: https://app.loops.so/openapi.yaml
-    type: OpenAPI
-  - url: https://app.loops.so/openapi.json
-    type: OpenAPI
-  - url: openapi/loops-openapi.yml
-    type: OpenAPI
-  description: The Loops API is a single REST API exposing every Loops resource —
-    contacts, contact properties, mailing lists, events, campaigns, email messages,
-    themes, components, transactional sends, uploads, suppressions, and dedicated
-    sending IPs. Base URL is https://app.loops.so/api/v1. Bearer-token authentication
-    with API keys generated in Settings → API. Defaults to 10 requests/second per
-    team with x-ratelimit-limit and x-ratelimit-remaining response headers; returns
-    HTTP 429 when exceeded. OpenAPI 3.1 spec published at app.loops.so/openapi.yaml.
+  - type: OpenAPI
+    url: openapi/loops-so-api-key-api-openapi.yml
+  - type: Documentation
+    url: https://loops.so/docs/api-reference/intro
+- aid: loops-so:loops-so-campaigns-api
+  name: Loops Campaigns API
+  description: Create and manage email campaigns
+  humanURL: https://loops.so/docs/api-reference/intro
+  tags:
+  - Campaigns
+  properties:
+  - type: OpenAPI
+    url: openapi/loops-so-campaigns-api-openapi.yml
+  - type: Documentation
+    url: https://loops.so/docs/api-reference/intro
+- aid: loops-so:loops-so-components-api
+  name: Loops Components API
+  description: View email components
+  humanURL: https://loops.so/docs/api-reference/intro
+  tags:
+  - Components
+  properties:
+  - type: OpenAPI
+    url: openapi/loops-so-components-api-openapi.yml
+  - type: Documentation
+    url: https://loops.so/docs/api-reference/intro
+- aid: loops-so:loops-so-contact-properties-api
+  name: Loops Contact properties API
+  description: Manage contact properties
+  humanURL: https://loops.so/docs/api-reference/intro
+  tags:
+  - Contact properties
+  properties:
+  - type: OpenAPI
+    url: openapi/loops-so-contact-properties-api-openapi.yml
+  - type: Documentation
+    url: https://loops.so/docs/api-reference/intro
+- aid: loops-so:loops-so-contacts-api
+  name: Loops Contacts API
+  description: Manage contacts in your audience
+  humanURL: https://loops.so/docs/api-reference/intro
+  tags:
+  - Contacts
+  properties:
+  - type: OpenAPI
+    url: openapi/loops-so-contacts-api-openapi.yml
+  - type: Documentation
+    url: https://loops.so/docs/api-reference/intro
+- aid: loops-so:loops-so-dedicated-sending-ips-api
+  name: Loops Dedicated sending IPs API
+  description: View dedicated sending IP addresses
+  humanURL: https://loops.so/docs/api-reference/intro
+  tags:
+  - Dedicated sending IPs
+  properties:
+  - type: OpenAPI
+    url: openapi/loops-so-dedicated-sending-ips-api-openapi.yml
+  - type: Documentation
+    url: https://loops.so/docs/api-reference/intro
+- aid: loops-so:loops-so-email-messages-api
+  name: Loops Email messages API
+  description: Manage email message content for campaigns
+  humanURL: https://loops.so/docs/api-reference/intro
+  tags:
+  - Email messages
+  properties:
+  - type: OpenAPI
+    url: openapi/loops-so-email-messages-api-openapi.yml
+  - type: Documentation
+    url: https://loops.so/docs/api-reference/intro
+- aid: loops-so:loops-so-events-api
+  name: Loops Events API
+  description: Trigger email sending with events
+  humanURL: https://loops.so/docs/api-reference/intro
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/loops-so-events-api-openapi.yml
+  - type: Documentation
+    url: https://loops.so/docs/api-reference/intro
+- aid: loops-so:loops-so-mailing-lists-api
+  name: Loops Mailing lists API
+  description: View mailing lists
+  humanURL: https://loops.so/docs/api-reference/intro
+  tags:
+  - Mailing lists
+  properties:
+  - type: OpenAPI
+    url: openapi/loops-so-mailing-lists-api-openapi.yml
+  - type: Documentation
+    url: https://loops.so/docs/api-reference/intro
+- aid: loops-so:loops-so-themes-api
+  name: Loops Themes API
+  description: View email themes
+  humanURL: https://loops.so/docs/api-reference/intro
+  tags:
+  - Themes
+  properties:
+  - type: OpenAPI
+    url: openapi/loops-so-themes-api-openapi.yml
+  - type: Documentation
+    url: https://loops.so/docs/api-reference/intro
+- aid: loops-so:loops-so-transactional-emails-api
+  name: Loops Transactional emails API
+  description: Send and view transactional emails
+  humanURL: https://loops.so/docs/api-reference/intro
+  tags:
+  - Transactional emails
+  properties:
+  - type: OpenAPI
+    url: openapi/loops-so-transactional-emails-api-openapi.yml
+  - type: Documentation
+    url: https://loops.so/docs/api-reference/intro
+- aid: loops-so:loops-so-uploads-api
+  name: Loops Uploads API
+  description: Upload image assets
+  humanURL: https://loops.so/docs/api-reference/intro
+  tags:
+  - Uploads
+  properties:
+  - type: OpenAPI
+    url: openapi/loops-so-uploads-api-openapi.yml
+  - type: Documentation
+    url: https://loops.so/docs/api-reference/intro
 name: Loops
 tags:
 - Email
@@ -43,7 +148,19 @@ tags:
 - SaaS
 - Developer Tools
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/loops-so.png
 access: 3rd-Party
 common:
 - type: AgenticAccess
