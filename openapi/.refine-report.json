@@ -1,0 +1,36 @@
+{
+  "provider": "loops-so",
+  "sources": [
+    "loops-so-api-key-api-openapi.yml",
+    "loops-so-campaigns-api-openapi.yml",
+    "loops-so-components-api-openapi.yml",
+    "loops-so-contact-properties-api-openapi.yml",
+    "loops-so-contacts-api-openapi.yml",
+    "loops-so-dedicated-sending-ips-api-openapi.yml",
+    "loops-so-email-messages-api-openapi.yml",
+    "loops-so-events-api-openapi.yml",
+    "loops-so-mailing-lists-api-openapi.yml",
+    "loops-so-themes-api-openapi.yml",
+    "loops-so-transactional-emails-api-openapi.yml",
+    "loops-so-uploads-api-openapi.yml"
+  ],
+  "outputs": [
+    "loops-so-api-key-api-openapi.yml",
+    "loops-so-campaigns-api-openapi.yml",
+    "loops-so-components-api-openapi.yml",
+    "loops-so-contact-properties-api-openapi.yml",
+    "loops-so-contacts-api-openapi.yml",
+    "loops-so-dedicated-sending-ips-api-openapi.yml",
+    "loops-so-email-messages-api-openapi.yml",
+    "loops-so-events-api-openapi.yml",
+    "loops-so-mailing-lists-api-openapi.yml",
+    "loops-so-themes-api-openapi.yml",
+    "loops-so-transactional-emails-api-openapi.yml",
+    "loops-so-uploads-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
