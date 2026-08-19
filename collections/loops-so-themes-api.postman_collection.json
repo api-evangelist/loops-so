@@ -1,0 +1,592 @@
+{
+  "item": [
+    {
+      "id": "02f507ae-4b6e-4955-87d5-bcc4c8e108ae",
+      "name": "Themes",
+      "description": {
+        "content": "View email themes",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "12235155-9746-4595-a7be-fe1109ec3442",
+          "name": "Get a theme",
+          "request": {
+            "name": "Get a theme",
+            "description": {
+              "content": "Retrieve a single theme by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "themes",
+                ":themeId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "themeId",
+                  "description": "(Required) The ID of the theme."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b2af599f-6d7f-4a37-a041-225225eea1f1",
+              "name": "Successful.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "themes",
+                    ":themeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "themeId",
+                      "description": "(Required) The ID of the theme."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"themeId\": \"string\",\n  \"name\": \"string\",\n  \"styles\": {\n    \"backgroundColor\": \"string\",\n    \"backgroundXPadding\": 7417.4303141607,\n    \"backgroundYPadding\": 8823.601538590823,\n    \"bodyColor\": \"string\",\n    \"bodyXPadding\": 4965.613785086927,\n    \"bodyYPadding\": 1610.1753546477514,\n    \"bodyFontFamily\": \"string\",\n    \"bodyFontCategory\": \"string\",\n    \"borderColor\": \"string\",\n    \"borderWidth\": 8011.2882033235,\n    \"borderRadius\": 4054.9504204012956,\n    \"buttonBodyColor\": \"string\",\n    \"buttonBodyXPadding\": 2424.501789751772,\n    \"buttonBodyYPadding\": 604.3298728123136,\n    \"buttonBorderColor\": \"string\",\n    \"buttonBorderWidth\": 5975.06033184302,\n    \"buttonBorderRadius\": 5081.962749169504,\n    \"buttonTextColor\": \"string\",\n    \"buttonTextFormat\": 4073.7314526629652,\n    \"buttonTextFontSize\": 7010.407385344782,\n    \"dividerColor\": \"string\",\n    \"dividerBorderWidth\": 436.7328440490314,\n    \"textBaseColor\": \"string\",\n    \"textBaseFontSize\": 4229.296225299212,\n    \"textBaseLineHeight\": 1533.4386478187844,\n    \"textBaseLetterSpacing\": 5803.978636421268,\n    \"textLinkColor\": \"string\",\n    \"heading1Color\": \"string\",\n    \"heading1FontSize\": 7260.852451635944,\n    \"heading1LineHeight\": 4036.12018542011,\n    \"heading1LetterSpacing\": 6477.614462498081,\n    \"heading2Color\": \"string\",\n    \"heading2FontSize\": 1075.495645409702,\n    \"heading2LineHeight\": 8291.653840039884,\n    \"heading2LetterSpacing\": 6911.904664346234,\n    \"heading3Color\": \"string\",\n    \"heading3FontSize\": 8484.147475054679,\n    \"heading3LineHeight\": 6468.673884001367,\n    \"heading3LetterSpacing\": 4899.89102237848\n  },\n  \"isDefault\": true,\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2161dc26-a84b-4009-b1eb-4f50546cc0b4",
+              "name": "Invalid `themeId`.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "themes",
+                    ":themeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "themeId",
+                      "description": "(Required) The ID of the theme."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "047561dc-1f9c-491a-8c6a-3ba01aa94717",
+              "name": "Invalid API key or content API not enabled for this team.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "themes",
+                    ":themeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "themeId",
+                      "description": "(Required) The ID of the theme."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "039d8d55-314e-433c-be75-9ba8cffd9ea0",
+              "name": "Theme not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "themes",
+                    ":themeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "themeId",
+                      "description": "(Required) The ID of the theme."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1017f234-adb1-4324-bad5-68ad96c4ca0c",
+              "name": "Wrong HTTP request method.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "themes",
+                    ":themeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "themeId",
+                      "description": "(Required) The ID of the theme."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "01ba7cb3-13d1-4c7c-92e2-1c7d829acac4",
+          "name": "List themes",
+          "request": {
+            "name": "List themes",
+            "description": {
+              "content": "Retrieve a paginated list of email themes, most recently created first.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "themes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "perPage",
+                  "value": "<string>",
+                  "description": "How many results to return in each request. Must be between 10 and 50. Default is 20."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "A cursor to return a specific page of results. Cursors can be found from the `pagination.nextCursor` value in each response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6c25d34d-78a7-4048-ac8c-942d1bbffa3b",
+              "name": "Successful.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "themes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "perPage",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"pagination\": {\n    \"totalResults\": 5332.903921097229,\n    \"returnedResults\": 3347.2107270448414,\n    \"perPage\": 4988.521867255031,\n    \"totalPages\": 3253.2687300382768,\n    \"nextCursor\": \"string\",\n    \"nextPage\": \"string\"\n  },\n  \"data\": [\n    {\n      \"themeId\": \"string\",\n      \"name\": \"string\",\n      \"styles\": {\n        \"backgroundColor\": \"string\",\n        \"backgroundXPadding\": 25.23462553061684,\n        \"backgroundYPadding\": 3438.352287227299,\n        \"bodyColor\": \"string\",\n        \"bodyXPadding\": 2216.903317128154,\n        \"bodyYPadding\": 3096.010390544696,\n        \"bodyFontFamily\": \"string\",\n        \"bodyFontCategory\": \"string\",\n        \"borderColor\": \"string\",\n        \"borderWidth\": 2692.3307485393043,\n        \"borderRadius\": 3839.8689742242177,\n        \"buttonBodyColor\": \"string\",\n        \"buttonBodyXPadding\": 5652.075534111802,\n        \"buttonBodyYPadding\": 4813.012090686959,\n        \"buttonBorderColor\": \"string\",\n        \"buttonBorderWidth\": 3741.504574683011,\n        \"buttonBorderRadius\": 6604.55093498812,\n        \"buttonTextColor\": \"string\",\n        \"buttonTextFormat\": 3971.8917640107866,\n        \"buttonTextFontSize\": 5824.877620283011,\n        \"dividerColor\": \"string\",\n        \"dividerBorderWidth\": 9602.045425357152,\n        \"textBaseColor\": \"string\",\n        \"textBaseFontSize\": 983.1702917747143,\n        \"textBaseLineHeight\": 3532.900003090341,\n        \"textBaseLetterSpacing\": 884.6047122017609,\n        \"textLinkColor\": \"string\",\n        \"heading1Color\": \"string\",\n        \"heading1FontSize\": 8747.360020930706,\n        \"heading1LineHeight\": 7778.566749191299,\n        \"heading1LetterSpacing\": 6049.240129729118,\n        \"heading2Color\": \"string\",\n        \"heading2FontSize\": 2507.230172730599,\n        \"heading2LineHeight\": 1004.3839856748382,\n        \"heading2LetterSpacing\": 509.2669604314404,\n        \"heading3Color\": \"string\",\n        \"heading3FontSize\": 1629.518903403293,\n        \"heading3LineHeight\": 5535.949170244765,\n        \"heading3LetterSpacing\": 1781.57471253228\n      },\n      \"isDefault\": true,\n      \"createdAt\": \"string\",\n      \"updatedAt\": \"string\"\n    },\n    {\n      \"themeId\": \"string\",\n      \"name\": \"string\",\n      \"styles\": {\n        \"backgroundColor\": \"string\",\n        \"backgroundXPadding\": 582.2611745819805,\n        \"backgroundYPadding\": 786.4261151396079,\n        \"bodyColor\": \"string\",\n        \"bodyXPadding\": 5776.852434072215,\n        \"bodyYPadding\": 2732.5753135309296,\n        \"bodyFontFamily\": \"string\",\n        \"bodyFontCategory\": \"string\",\n        \"borderColor\": \"string\",\n        \"borderWidth\": 5413.329983609056,\n        \"borderRadius\": 1985.1592989972733,\n        \"buttonBodyColor\": \"string\",\n        \"buttonBodyXPadding\": 629.1678234020992,\n        \"buttonBodyYPadding\": 2481.2471386937186,\n        \"buttonBorderColor\": \"string\",\n        \"buttonBorderWidth\": 2713.8852888035103,\n        \"buttonBorderRadius\": 2087.4183730369787,\n        \"buttonTextColor\": \"string\",\n        \"buttonTextFormat\": 8552.482033639775,\n        \"buttonTextFontSize\": 4861.595631879668,\n        \"dividerColor\": \"string\",\n        \"dividerBorderWidth\": 1647.110759225342,\n        \"textBaseColor\": \"string\",\n        \"textBaseFontSize\": 5456.415723095799,\n        \"textBaseLineHeight\": 7520.006897820205,\n        \"textBaseLetterSpacing\": 1137.2752393248786,\n        \"textLinkColor\": \"string\",\n        \"heading1Color\": \"string\",\n        \"heading1FontSize\": 7772.95233317655,\n        \"heading1LineHeight\": 8522.80098157846,\n        \"heading1LetterSpacing\": 6763.388052585494,\n        \"heading2Color\": \"string\",\n        \"heading2FontSize\": 6807.761855535079,\n        \"heading2LineHeight\": 6269.528521405592,\n        \"heading2LetterSpacing\": 4133.2127920587545,\n        \"heading3Color\": \"string\",\n        \"heading3FontSize\": 7518.133723187835,\n        \"heading3LineHeight\": 5757.506114216832,\n        \"heading3LetterSpacing\": 9220.645638741285\n      },\n      \"isDefault\": false,\n      \"createdAt\": \"string\",\n      \"updatedAt\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4c48ec1-d8ea-4c1d-b99d-a9574439f544",
+              "name": "Invalid `perPage` value.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "themes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "perPage",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f44191ec-4f9f-4a45-a0a4-3534a456224a",
+              "name": "Invalid API key or content API not enabled for this team.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "themes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "perPage",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6ebcfb02-9078-4f11-8c44-9c724f7071f6",
+              "name": "Wrong HTTP request method.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "themes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "perPage",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.loops.so/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "767726b8-f758-403c-8a1c-322d447f50d6",
+    "name": "Loops OpenAPI Spec API key Themes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
+      "type": "text/plain"
+    }
+  }
+}

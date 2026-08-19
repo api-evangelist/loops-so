@@ -1,0 +1,531 @@
+{
+  "item": [
+    {
+      "id": "dcdea523-6355-404f-8f0f-99a97e0b9518",
+      "name": "Transactional emails",
+      "description": {
+        "content": "Send and view transactional emails",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "064a9455-322a-4a52-9a4b-1377f3b51d39",
+          "name": "Send a transactional email",
+          "request": {
+            "name": "Send a transactional email",
+            "description": {
+              "content": "Send a transactional email to a contact.<br>Please [email us](mailto:help@loops.so) to enable attachments on your account before using them with the API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transactional"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Include a unique ID for this request (maximum 100 characters) to avoid duplicate emails. [More info](https://loops.so/docs/api-reference/send-transactional-email#param-idempotency-key)",
+                "key": "Idempotency-Key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<string>\",\n  \"transactionalId\": \"<string>\",\n  \"addToAudience\": \"<boolean>\",\n  \"dataVariables\": \"<object>\",\n  \"attachments\": [\n    {\n      \"filename\": \"<string>\",\n      \"contentType\": \"<string>\",\n      \"data\": \"<string>\"\n    },\n    {\n      \"filename\": \"<string>\",\n      \"contentType\": \"<string>\",\n      \"data\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4a3637b9-7846-4660-ad4e-2c502d363b8c",
+              "name": "Successful send.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactional"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Include a unique ID for this request (maximum 100 characters) to avoid duplicate emails. [More info](https://loops.so/docs/api-reference/send-transactional-email#param-idempotency-key)",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"transactionalId\": \"<string>\",\n  \"addToAudience\": \"<boolean>\",\n  \"dataVariables\": {\n    \"name\": \"Chris\",\n    \"passwordResetLink\": \"https://example.com/reset-password\"\n  },\n  \"attachments\": [\n    {\n      \"filename\": \"<string>\",\n      \"contentType\": \"<string>\",\n      \"data\": \"<string>\"\n    },\n    {\n      \"filename\": \"<string>\",\n      \"contentType\": \"<string>\",\n      \"data\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "51fb49ce-fc73-42a9-8d49-e5a2b32a169a",
+              "name": "Bad request (e.g. transactional email is not published).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactional"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Include a unique ID for this request (maximum 100 characters) to avoid duplicate emails. [More info](https://loops.so/docs/api-reference/send-transactional-email#param-idempotency-key)",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"transactionalId\": \"<string>\",\n  \"addToAudience\": \"<boolean>\",\n  \"dataVariables\": {\n    \"name\": \"Chris\",\n    \"passwordResetLink\": \"https://example.com/reset-password\"\n  },\n  \"attachments\": [\n    {\n      \"filename\": \"<string>\",\n      \"contentType\": \"<string>\",\n      \"data\": \"<string>\"\n    },\n    {\n      \"filename\": \"<string>\",\n      \"contentType\": \"<string>\",\n      \"data\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6328c5c5-a83f-4cce-8a96-69807a284fb3",
+              "name": "Transactional email not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactional"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Include a unique ID for this request (maximum 100 characters) to avoid duplicate emails. [More info](https://loops.so/docs/api-reference/send-transactional-email#param-idempotency-key)",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"transactionalId\": \"<string>\",\n  \"addToAudience\": \"<boolean>\",\n  \"dataVariables\": {\n    \"name\": \"Chris\",\n    \"passwordResetLink\": \"https://example.com/reset-password\"\n  },\n  \"attachments\": [\n    {\n      \"filename\": \"<string>\",\n      \"contentType\": \"<string>\",\n      \"data\": \"<string>\"\n    },\n    {\n      \"filename\": \"<string>\",\n      \"contentType\": \"<string>\",\n      \"data\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\",\n  \"error\": {\n    \"path\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d00f9f75-066b-4e5e-b6ec-85316bbba3a5",
+              "name": "Wrong HTTP request method.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactional"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Include a unique ID for this request (maximum 100 characters) to avoid duplicate emails. [More info](https://loops.so/docs/api-reference/send-transactional-email#param-idempotency-key)",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"transactionalId\": \"<string>\",\n  \"addToAudience\": \"<boolean>\",\n  \"dataVariables\": {\n    \"name\": \"Chris\",\n    \"passwordResetLink\": \"https://example.com/reset-password\"\n  },\n  \"attachments\": [\n    {\n      \"filename\": \"<string>\",\n      \"contentType\": \"<string>\",\n      \"data\": \"<string>\"\n    },\n    {\n      \"filename\": \"<string>\",\n      \"contentType\": \"<string>\",\n      \"data\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "12f360fa-8c31-4aef-bc34-55a786bb078a",
+              "name": "Idempotency key has been used.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactional"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Include a unique ID for this request (maximum 100 characters) to avoid duplicate emails. [More info](https://loops.so/docs/api-reference/send-transactional-email#param-idempotency-key)",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"transactionalId\": \"<string>\",\n  \"addToAudience\": \"<boolean>\",\n  \"dataVariables\": {\n    \"name\": \"Chris\",\n    \"passwordResetLink\": \"https://example.com/reset-password\"\n  },\n  \"attachments\": [\n    {\n      \"filename\": \"<string>\",\n      \"contentType\": \"<string>\",\n      \"data\": \"<string>\"\n    },\n    {\n      \"filename\": \"<string>\",\n      \"contentType\": \"<string>\",\n      \"data\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cfd1a797-279b-4b7a-a3b2-e200e86c5a23",
+          "name": "List transactional emails",
+          "request": {
+            "name": "List transactional emails",
+            "description": {
+              "content": "Get a list of published transactional emails.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transactional"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "perPage",
+                  "value": "<string>",
+                  "description": "How many results to return in each request. Must be between 10 and 50. Default is 20."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "A cursor, to return a specific page of results. Cursors can be found from the `pagination.nextCursor` value in each response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c1741035-fb0f-4bf7-bfcf-feabc5a7514b",
+              "name": "Successful.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactional"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "perPage",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pagination\": {\n    \"totalResults\": 173.85491676279895,\n    \"returnedResults\": 9760.247679221951,\n    \"perPage\": 5508.685083975332,\n    \"totalPages\": 1705.3243162754407,\n    \"nextCursor\": \"string\",\n    \"nextPage\": \"string\"\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"lastUpdated\": \"string\",\n      \"dataVariables\": []\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"lastUpdated\": \"string\",\n      \"dataVariables\": []\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5380556a-7e88-445b-a9dc-3e89562b0ca4",
+              "name": "Wrong HTTP request method.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transactional"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "perPage",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.loops.so/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cad78207-1610-45c9-aa3c-def42a8bc021",
+    "name": "Loops OpenAPI Spec API key Transactional emails API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
+      "type": "text/plain"
+    }
+  }
+}

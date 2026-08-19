@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Loops OpenAPI Spec API key Themes API",
+    "version": "1.8.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Themes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a theme",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.loops.so/api/v1/themes/:themeId",
+            "params": [
+              {
+                "name": "themeId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the theme."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a single theme by ID."
+        },
+        {
+          "info": {
+            "name": "List themes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.loops.so/api/v1/themes",
+            "params": [
+              {
+                "name": "perPage",
+                "value": "",
+                "type": "query",
+                "description": "How many results to return in each request. Must be between 10 and 50. Default is 20."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "A cursor to return a specific page of results. Cursors can be found from the `pagination.nextCursor` value in each response."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a paginated list of email themes, most recently created first."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

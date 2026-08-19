@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Loops OpenAPI Spec API key Email messages API",
+    "version": "1.8.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Email messages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get an email message",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.loops.so/api/v1/email-messages/:emailMessageId",
+            "params": [
+              {
+                "name": "emailMessageId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the email message."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve an email message, including its compiled LMX content."
+        },
+        {
+          "info": {
+            "name": "Update an email message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.loops.so/api/v1/email-messages/:emailMessageId",
+            "params": [
+              {
+                "name": "emailMessageId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the email message."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update fields on an email message (subject, preview text, sender, LMX content). The campaign must be in draft status. Supply `expectedRevisionId` matching the current `contentRevisionId` — the server rejects mismatched revisions with 409."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

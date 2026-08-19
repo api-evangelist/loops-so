@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Loops OpenAPI Spec API key Components API",
+    "version": "1.8.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Components",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a component",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.loops.so/api/v1/components/:componentId",
+            "params": [
+              {
+                "name": "componentId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the component."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a single component by ID."
+        },
+        {
+          "info": {
+            "name": "List components",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.loops.so/api/v1/components",
+            "params": [
+              {
+                "name": "perPage",
+                "value": "",
+                "type": "query",
+                "description": "How many results to return in each request. Must be between 10 and 50. Default is 20."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "A cursor to return a specific page of results. Cursors can be found from the `pagination.nextCursor` value in each response."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a paginated list of email components."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

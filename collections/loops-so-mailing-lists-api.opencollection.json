@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Loops OpenAPI Spec API key Mailing lists API",
+    "version": "1.8.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mailing lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of mailing lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.loops.so/api/v1/lists",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a list of your account's mailing lists."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

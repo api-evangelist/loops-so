@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Loops OpenAPI Spec API key Dedicated sending IPs API",
+    "version": "1.8.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dedicated sending IPs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get dedicated sending IP addresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.loops.so/api/v1/dedicated-sending-ips",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a list of Loops' dedicated sending IP addresses."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

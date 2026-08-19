@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Loops OpenAPI Spec API key Contact properties API",
+    "version": "1.8.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contact properties",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of contact properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.loops.so/api/v1/contacts/properties",
+            "params": [
+              {
+                "name": "list",
+                "value": "",
+                "type": "query",
+                "description": "\\\"all\\\" (default) or \\\"custom\\\""
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a list of your account's contact properties.<br>Use the `list` parameter to query \"all\" or \"custom\" properties."
+        },
+        {
+          "info": {
+            "name": "Create a contact property",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.loops.so/api/v1/contacts/properties",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Add a contact property to your team."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

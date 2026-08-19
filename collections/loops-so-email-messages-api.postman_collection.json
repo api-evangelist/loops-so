@@ -1,0 +1,925 @@
+{
+  "item": [
+    {
+      "id": "b695d654-7fad-4bae-9886-b2367dfd0e15",
+      "name": "Email messages",
+      "description": {
+        "content": "Manage email message content for campaigns",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8f21448b-c04f-463b-aa64-77a54f67b74e",
+          "name": "Get an email message",
+          "request": {
+            "name": "Get an email message",
+            "description": {
+              "content": "Retrieve an email message, including its compiled LMX content.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "email-messages",
+                ":emailMessageId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "emailMessageId",
+                  "description": "(Required) The ID of the email message."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bcb2ff8b-0bbe-4448-80d2-92578e01d932",
+              "name": "Successful.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-messages",
+                    ":emailMessageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailMessageId",
+                      "description": "(Required) The ID of the email message."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"emailMessageId\": \"string\",\n  \"campaignId\": \"string\",\n  \"subject\": \"string\",\n  \"previewText\": \"string\",\n  \"fromName\": \"string\",\n  \"fromEmail\": \"string\",\n  \"replyToEmail\": \"string\",\n  \"lmx\": \"string\",\n  \"contentRevisionId\": \"string\",\n  \"updatedAt\": \"2023-08-25T12:59:21.130Z\",\n  \"warnings\": [\n    {\n      \"rule\": \"string\",\n      \"severity\": \"warning\",\n      \"message\": \"string\",\n      \"path\": \"string\"\n    },\n    {\n      \"rule\": \"string\",\n      \"severity\": \"warning\",\n      \"message\": \"string\",\n      \"path\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1028c29-b134-4cd7-8241-86fe71128b42",
+              "name": "Invalid `emailMessageId` or no sending domain configured.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-messages",
+                    ":emailMessageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailMessageId",
+                      "description": "(Required) The ID of the email message."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38a5c06a-7542-40a9-b1c1-983beeb82e56",
+              "name": "Invalid API key or content API not enabled for this team.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-messages",
+                    ":emailMessageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailMessageId",
+                      "description": "(Required) The ID of the email message."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c1eb7697-a791-4e61-a453-a0e1b3405bca",
+              "name": "Email message not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-messages",
+                    ":emailMessageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailMessageId",
+                      "description": "(Required) The ID of the email message."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d205c44-dad3-4c85-a74f-69447960a962",
+              "name": "Wrong HTTP request method.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-messages",
+                    ":emailMessageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailMessageId",
+                      "description": "(Required) The ID of the email message."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f3353e98-6523-40dd-a101-c431d4e981cf",
+              "name": "Email message uses MJML format or content cannot be parsed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-messages",
+                    ":emailMessageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailMessageId",
+                      "description": "(Required) The ID of the email message."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "97566388-f24f-4adc-a5e5-157cf14b6938",
+          "name": "Update an email message",
+          "request": {
+            "name": "Update an email message",
+            "description": {
+              "content": "Update fields on an email message (subject, preview text, sender, LMX content). The campaign must be in draft status. Supply `expectedRevisionId` matching the current `contentRevisionId` — the server rejects mismatched revisions with 409.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "email-messages",
+                ":emailMessageId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "emailMessageId",
+                  "description": "(Required) The ID of the email message."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevisionId\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"previewText\": \"<string>\",\n  \"fromName\": \"<string>\",\n  \"fromEmail\": \"<string>\",\n  \"replyToEmail\": \"<string>\",\n  \"lmx\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1a235074-9f3d-48ea-9959-a220030c73d7",
+              "name": "Email message updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-messages",
+                    ":emailMessageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailMessageId",
+                      "description": "(Required) The ID of the email message."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"expectedRevisionId\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"previewText\": \"<string>\",\n  \"fromName\": \"<string>\",\n  \"fromEmail\": \"<string>\",\n  \"replyToEmail\": \"<string>\",\n  \"lmx\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"emailMessageId\": \"string\",\n  \"campaignId\": \"string\",\n  \"subject\": \"string\",\n  \"previewText\": \"string\",\n  \"fromName\": \"string\",\n  \"fromEmail\": \"string\",\n  \"replyToEmail\": \"string\",\n  \"lmx\": \"string\",\n  \"contentRevisionId\": \"string\",\n  \"updatedAt\": \"2023-08-25T12:59:21.130Z\",\n  \"warnings\": [\n    {\n      \"rule\": \"string\",\n      \"severity\": \"warning\",\n      \"message\": \"string\",\n      \"path\": \"string\"\n    },\n    {\n      \"rule\": \"string\",\n      \"severity\": \"warning\",\n      \"message\": \"string\",\n      \"path\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c1c52a7-50a2-49c3-a625-100afc06418d",
+              "name": "Invalid request body.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-messages",
+                    ":emailMessageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailMessageId",
+                      "description": "(Required) The ID of the email message."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"expectedRevisionId\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"previewText\": \"<string>\",\n  \"fromName\": \"<string>\",\n  \"fromEmail\": \"<string>\",\n  \"replyToEmail\": \"<string>\",\n  \"lmx\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a43fc3f-9b86-4c1a-b972-7ae15d7c38ae",
+              "name": "Invalid API key or content API not enabled for this team.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-messages",
+                    ":emailMessageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailMessageId",
+                      "description": "(Required) The ID of the email message."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"expectedRevisionId\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"previewText\": \"<string>\",\n  \"fromName\": \"<string>\",\n  \"fromEmail\": \"<string>\",\n  \"replyToEmail\": \"<string>\",\n  \"lmx\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1f1cce77-2854-4641-b676-5efd8aaa1ad7",
+              "name": "Email message not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-messages",
+                    ":emailMessageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailMessageId",
+                      "description": "(Required) The ID of the email message."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"expectedRevisionId\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"previewText\": \"<string>\",\n  \"fromName\": \"<string>\",\n  \"fromEmail\": \"<string>\",\n  \"replyToEmail\": \"<string>\",\n  \"lmx\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5721a0e2-8f98-44f8-919f-ae6ea6509a6d",
+              "name": "Wrong HTTP request method.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-messages",
+                    ":emailMessageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailMessageId",
+                      "description": "(Required) The ID of the email message."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"expectedRevisionId\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"previewText\": \"<string>\",\n  \"fromName\": \"<string>\",\n  \"fromEmail\": \"<string>\",\n  \"replyToEmail\": \"<string>\",\n  \"lmx\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1844189a-a00d-4fe9-a9ef-456eeb485f65",
+              "name": "Campaign is not in draft status, `contentRevisionId` is stale, content cannot be parsed, or email message uses MJML format.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-messages",
+                    ":emailMessageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailMessageId",
+                      "description": "(Required) The ID of the email message."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"expectedRevisionId\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"previewText\": \"<string>\",\n  \"fromName\": \"<string>\",\n  \"fromEmail\": \"<string>\",\n  \"replyToEmail\": \"<string>\",\n  \"lmx\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f5f3c70-b7b9-4e31-9c3e-7229f7959213",
+              "name": "LMX payload exceeds the 100KB limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-messages",
+                    ":emailMessageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailMessageId",
+                      "description": "(Required) The ID of the email message."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"expectedRevisionId\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"previewText\": \"<string>\",\n  \"fromName\": \"<string>\",\n  \"fromEmail\": \"<string>\",\n  \"replyToEmail\": \"<string>\",\n  \"lmx\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a5a482eb-9fb8-4f0e-be51-42d9b123f3ae",
+              "name": "LMX failed to compile.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "email-messages",
+                    ":emailMessageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailMessageId",
+                      "description": "(Required) The ID of the email message."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"expectedRevisionId\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"previewText\": \"<string>\",\n  \"fromName\": \"<string>\",\n  \"fromEmail\": \"<string>\",\n  \"replyToEmail\": \"<string>\",\n  \"lmx\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.loops.so/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7f5cae17-eb69-4c5c-99c0-4fcedb639f30",
+    "name": "Loops OpenAPI Spec API key Email messages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
+      "type": "text/plain"
+    }
+  }
+}

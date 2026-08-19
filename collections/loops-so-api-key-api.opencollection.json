@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Loops OpenAPI Spec API key API",
+    "version": "1.8.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "API key",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Test your API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.loops.so/api/v1/api-key",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Test your API key"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

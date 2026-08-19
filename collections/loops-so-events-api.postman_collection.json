@@ -1,0 +1,323 @@
+{
+  "item": [
+    {
+      "id": "31dfe679-3d1f-45dc-ab65-69b2f5b4b497",
+      "name": "Events",
+      "description": {
+        "content": "Trigger email sending with events",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7f3996c6-769a-4831-9252-8f3f9ffd8483",
+          "name": "Send an event",
+          "request": {
+            "name": "Send an event",
+            "description": {
+              "content": "Send events to trigger emails in Loops.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "send"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Include a unique ID for this request (maximum 100 characters) to avoid duplicate events. [More info](https://loops.so/docs/api-reference/send-event#param-idempotency-key)",
+                "key": "Idempotency-Key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"eventProperties\": \"<object>\",\n  \"mailingLists\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f9c57679-3fe7-4416-a365-3d3d62724a53",
+              "name": "Successful send.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Include a unique ID for this request (maximum 100 characters) to avoid duplicate events. [More info](https://loops.so/docs/api-reference/send-event#param-idempotency-key)",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"eventName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"eventProperties\": \"<object>\",\n  \"mailingLists\": {\n    \"list_123\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9070512d-249d-4e0b-9675-c40c16ca0804",
+              "name": "Bad request (e.g. `eventName` is missing).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Include a unique ID for this request (maximum 100 characters) to avoid duplicate events. [More info](https://loops.so/docs/api-reference/send-event#param-idempotency-key)",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"eventName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"eventProperties\": \"<object>\",\n  \"mailingLists\": {\n    \"list_123\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "926b0a9a-d3e1-40e9-b886-9b601bc0fbed",
+              "name": "Wrong HTTP request method.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Include a unique ID for this request (maximum 100 characters) to avoid duplicate events. [More info](https://loops.so/docs/api-reference/send-event#param-idempotency-key)",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"eventName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"eventProperties\": \"<object>\",\n  \"mailingLists\": {\n    \"list_123\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "11332325-bf97-4aa9-ba80-711fe4d29eaf",
+              "name": "Idempotency key has been used.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Include a unique ID for this request (maximum 100 characters) to avoid duplicate events. [More info](https://loops.so/docs/api-reference/send-event#param-idempotency-key)",
+                    "key": "Idempotency-Key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"eventName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"eventProperties\": \"<object>\",\n  \"mailingLists\": {\n    \"list_123\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.loops.so/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b54cd1ee-f037-4550-af56-7f47efa15869",
+    "name": "Loops OpenAPI Spec API key Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
+      "type": "text/plain"
+    }
+  }
+}
