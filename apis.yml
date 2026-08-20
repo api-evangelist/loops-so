@@ -6,6 +6,8 @@ apis:
   description: The API key API from Loops — 1 operation(s) for api key.
   humanURL: https://loops.so/docs/api-reference/intro
   tags:
+  - APIKeys
+  tags_raw:
   - API key
   properties:
   - type: OpenAPI
@@ -83,6 +85,8 @@ apis:
   description: Trigger email sending with events
   humanURL: https://loops.so/docs/api-reference/intro
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -94,6 +98,8 @@ apis:
   description: View mailing lists
   humanURL: https://loops.so/docs/api-reference/intro
   tags:
+  - Mailing Lists
+  tags_raw:
   - Mailing lists
   properties:
   - type: OpenAPI
@@ -116,6 +122,8 @@ apis:
   description: Send and view transactional emails
   humanURL: https://loops.so/docs/api-reference/intro
   tags:
+  - Transactional Emails
+  tags_raw:
   - Transactional emails
   properties:
   - type: OpenAPI
@@ -135,6 +143,19 @@ apis:
     url: https://loops.so/docs/api-reference/intro
 name: Loops
 tags:
+- Email
+- Marketing Email
+- Transactional Email
+- Email Automation
+- Email Campaigns
+- Email Workflows
+- Contacts
+- Audience Management
+- Event
+- Webhook
+- Software-as-a-Service
+- Developer Tools
+tags_raw:
 - Email
 - Marketing Email
 - Transactional Email
