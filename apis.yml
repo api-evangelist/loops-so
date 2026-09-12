@@ -197,6 +197,8 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/loops-so.png
 access: 3rd-Party
 common:
+- type: Website
+  url: https://www.loops.so/
 - type: AgenticAccess
   url: agentic-access/loops-so-agentic-access.yml
 - type: DomainSecurity
