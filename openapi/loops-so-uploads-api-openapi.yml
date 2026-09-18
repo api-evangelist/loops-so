@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Loops OpenAPI Spec API key Uploads API
-  description: This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).
+  title: Loops OpenAPI Spec Uploads API
+  description: This is the OpenAPI Spec for the Loops API.
   version: 1.8.0
 servers:
 - url: https://app.loops.so/api/v1
@@ -46,6 +46,8 @@ paths:
                 $ref: '#/components/schemas/UploadFailureResponse'
       security:
       - apiKey: []
+      operationId: postUploads
+      x-operation-id-source: derived
   /uploads/{id}/complete:
     parameters:
     - name: id
@@ -90,6 +92,8 @@ paths:
                 $ref: '#/components/schemas/UploadFailureResponse'
       security:
       - apiKey: []
+      operationId: postUploadsByIdComplete
+      x-operation-id-source: derived
 components:
   schemas:
     CreateUploadRequest:
@@ -109,6 +113,22 @@ components:
       - contentType
       - contentLength
       additionalProperties: false
+    CompleteUploadResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - true
+        emailAssetId:
+          type: string
+        finalUrl:
+          type: string
+          description: The public URL of the uploaded asset.
+      required:
+      - success
+      - emailAssetId
+      - finalUrl
     CreateUploadResponse:
       type: object
       properties:
@@ -146,22 +166,6 @@ components:
       required:
       - success
       - message
-    CompleteUploadResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          examples:
-          - true
-        emailAssetId:
-          type: string
-        finalUrl:
-          type: string
-          description: The public URL of the uploaded asset.
-      required:
-      - success
-      - emailAssetId
-      - finalUrl
   securitySchemes:
     apiKey:
       type: http

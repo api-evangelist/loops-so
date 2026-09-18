@@ -1,20 +1,22 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Loops OpenAPI Spec API key Transactional emails API
-  description: This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).
+  title: Loops OpenAPI Spec Transactional emails API
+  description: This is the OpenAPI Spec for the Loops API.
   version: 1.8.0
 servers:
 - url: https://app.loops.so/api/v1
 tags:
-- name: Transactional emails
+- name: Transactional Emails
   description: Send and view transactional emails
 paths:
   /transactional:
     post:
       tags:
-      - Transactional emails
+      - Transactional Emails
       summary: Send a transactional email
-      description: Send a transactional email to a contact.<br>Please [email us](mailto:help@loops.so) to enable attachments on your account before using them with the API.
+      description: 'Send a transactional email to a contact.
+
+        Please email us to enable attachments on your account before using them with the API.'
       requestBody:
         content:
           application/json:
@@ -62,9 +64,11 @@ paths:
                 $ref: '#/components/schemas/IdempotencyKeyFailureResponse'
       security:
       - apiKey: []
+      operationId: postTransactional
+      x-operation-id-source: derived
     get:
       tags:
-      - Transactional emails
+      - Transactional Emails
       summary: List transactional emails
       description: Get a list of published transactional emails.
       parameters:
@@ -91,6 +95,8 @@ paths:
           description: Wrong HTTP request method.
       security:
       - apiKey: []
+      operationId: getTransactional
+      x-operation-id-source: derived
 components:
   schemas:
     TransactionalFailureResponse:
@@ -105,41 +111,6 @@ components:
       required:
       - success
       - message
-    ListTransactionalsResponse:
-      type: object
-      properties:
-        pagination:
-          type: object
-          properties:
-            totalResults:
-              type: number
-            returnedResults:
-              type: number
-            perPage:
-              type: number
-            totalPages:
-              type: number
-            nextCursor:
-              type:
-              - string
-              - 'null'
-            nextPage:
-              type:
-              - string
-              - 'null'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransactionalEmail'
-    TransactionalSuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          examples:
-          - true
-      required:
-      - success
     IdempotencyKeyFailureResponse:
       type: object
       properties:
@@ -152,100 +123,6 @@ components:
       required:
       - success
       - message
-    TransactionalRequest:
-      type: object
-      required:
-      - email
-      - transactionalId
-      properties:
-        email:
-          type: string
-        transactionalId:
-          type: string
-          description: The ID of the transactional email to send.
-        addToAudience:
-          type: boolean
-          description: If `true`, a contact will be created in your audience using the `email` value (if a matching contact doesn't already exist).
-        dataVariables:
-          type: object
-          description: An object containing contact data as defined by the data variables added to the transactional email template.
-          examples:
-          - name: Chris
-            passwordResetLink: https://example.com/reset-password
-        attachments:
-          type: array
-          description: A list containing file objects to be sent along with an email message.
-          items:
-            type: object
-            required:
-            - filename
-            - contentType
-            - data
-            properties:
-              filename:
-                type: string
-                description: The name of the file, shown in email clients.
-              contentType:
-                type: string
-                description: The MIME type of the file.
-              data:
-                type: string
-                description: The base64-encoded content of the file.
-    TransactionalFailure3Response:
-      type: object
-      properties:
-        success:
-          type: boolean
-          examples:
-          - false
-        message:
-          type: string
-        error:
-          type: object
-          properties:
-            path:
-              type: string
-            message:
-              type: string
-      required:
-      - success
-      - message
-      - error
-    TransactionalFailure4Response:
-      type: object
-      properties:
-        success:
-          type: boolean
-          examples:
-          - false
-        message:
-          type: string
-        error:
-          type: object
-          properties:
-            path:
-              type: string
-            reason:
-              type: string
-      required:
-      - success
-      - message
-      - error
-    TransactionalFailure2Response:
-      type: object
-      properties:
-        success:
-          type: boolean
-          examples:
-          - false
-        message:
-          type: string
-        path:
-          type: string
-      required:
-      - success
-      - message
-      - path
     TransactionalEmail:
       type: object
       properties:
@@ -291,6 +168,135 @@ components:
       - message
       - error
       - transactionalId
+    TransactionalFailure3Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - false
+        message:
+          type: string
+        error:
+          type: object
+          properties:
+            path:
+              type: string
+            message:
+              type: string
+      required:
+      - success
+      - message
+      - error
+    ListTransactionalsResponse:
+      type: object
+      properties:
+        pagination:
+          type: object
+          properties:
+            totalResults:
+              type: number
+            returnedResults:
+              type: number
+            perPage:
+              type: number
+            totalPages:
+              type: number
+            nextCursor:
+              type:
+              - string
+              - 'null'
+            nextPage:
+              type:
+              - string
+              - 'null'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionalEmail'
+    TransactionalSuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - true
+      required:
+      - success
+    TransactionalFailure4Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - false
+        message:
+          type: string
+        error:
+          type: object
+          properties:
+            path:
+              type: string
+            reason:
+              type: string
+      required:
+      - success
+      - message
+      - error
+    TransactionalRequest:
+      type: object
+      required:
+      - email
+      - transactionalId
+      properties:
+        email:
+          type: string
+        transactionalId:
+          type: string
+          description: The ID of the transactional email to send.
+        addToAudience:
+          type: boolean
+          description: If `true`, a contact will be created in your audience using the `email` value (if a matching contact doesn't already exist).
+        dataVariables:
+          type: object
+          description: An object containing contact data as defined by the data variables added to the transactional email template.
+          examples:
+          - name: Chris
+            passwordResetLink: https://example.com/reset-password
+        attachments:
+          type: array
+          description: A list containing file objects to be sent along with an email message.
+          items:
+            type: object
+            required:
+            - filename
+            - contentType
+            - data
+            properties:
+              filename:
+                type: string
+                description: The name of the file, shown in email clients.
+              contentType:
+                type: string
+                description: The MIME type of the file.
+              data:
+                type: string
+                description: The base64-encoded content of the file.
+    TransactionalFailure2Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - false
+        message:
+          type: string
+        path:
+          type: string
+      required:
+      - success
+      - message
+      - path
   securitySchemes:
     apiKey:
       type: http

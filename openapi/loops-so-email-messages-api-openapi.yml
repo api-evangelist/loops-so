@@ -1,12 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Loops OpenAPI Spec API key Email messages API
-  description: This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).
+  title: Loops OpenAPI Spec Email messages API
+  description: This is the OpenAPI Spec for the Loops API.
   version: 1.8.0
 servers:
 - url: https://app.loops.so/api/v1
 tags:
-- name: Email messages
+- name: Email Messages
   description: Manage email message content for campaigns
 paths:
   /email-messages/{emailMessageId}:
@@ -19,7 +19,7 @@ paths:
         type: string
     get:
       tags:
-      - Email messages
+      - Email Messages
       summary: Get an email message
       description: Retrieve an email message, including its compiled LMX content.
       responses:
@@ -53,9 +53,11 @@ paths:
                 $ref: '#/components/schemas/EmailMessageFailureResponse'
       security:
       - apiKey: []
+      operationId: getEmailMessagesByEmailMessageId
+      x-operation-id-source: derived
     post:
       tags:
-      - Email messages
+      - Email Messages
       summary: Update an email message
       description: Update fields on an email message (subject, preview text, sender, LMX content). The campaign must be in draft status. Supply `expectedRevisionId` matching the current `contentRevisionId` — the server rejects mismatched revisions with 409.
       requestBody:
@@ -107,6 +109,8 @@ paths:
                 $ref: '#/components/schemas/EmailMessageFailureResponse'
       security:
       - apiKey: []
+      operationId: postEmailMessagesByEmailMessageId
+      x-operation-id-source: derived
 components:
   schemas:
     UpdateEmailMessageRequest:
@@ -131,18 +135,6 @@ components:
           type: string
           description: The email body serialized as LMX. Styles must be embedded in the LMX `<Style />` tag.
       additionalProperties: false
-    EmailMessageFailureResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          examples:
-          - false
-        message:
-          type: string
-      required:
-      - success
-      - message
     EmailMessageResponse:
       type: object
       properties:
@@ -209,6 +201,18 @@ components:
       - lmx
       - contentRevisionId
       - updatedAt
+    EmailMessageFailureResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - false
+        message:
+          type: string
+      required:
+      - success
+      - message
   securitySchemes:
     apiKey:
       type: http

@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Loops OpenAPI Spec API key Events API
-  description: This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).
+  title: Loops OpenAPI Spec Events API
+  description: This is the OpenAPI Spec for the Loops API.
   version: 1.8.0
 servers:
 - url: https://app.loops.so/api/v1
@@ -52,6 +52,8 @@ paths:
                 $ref: '#/components/schemas/IdempotencyKeyFailureResponse'
       security:
       - apiKey: []
+      operationId: postEventsSend
+      x-operation-id-source: derived
 components:
   schemas:
     EventFailureResponse:
@@ -78,15 +80,6 @@ components:
       required:
       - success
       - message
-    EventSuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          examples:
-          - true
-      required:
-      - success
     EventRequest:
       type: object
       required:
@@ -111,6 +104,15 @@ components:
         - type: string
         - type: number
         - type: boolean
+    EventSuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          examples:
+          - true
+      required:
+      - success
   securitySchemes:
     apiKey:
       type: http

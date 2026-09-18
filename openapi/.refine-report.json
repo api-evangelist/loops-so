@@ -1,18 +1,7 @@
 {
   "provider": "loops-so",
   "sources": [
-    "loops-so-api-key-api-openapi.yml",
-    "loops-so-campaigns-api-openapi.yml",
-    "loops-so-components-api-openapi.yml",
-    "loops-so-contact-properties-api-openapi.yml",
-    "loops-so-contacts-api-openapi.yml",
-    "loops-so-dedicated-sending-ips-api-openapi.yml",
-    "loops-so-email-messages-api-openapi.yml",
-    "loops-so-events-api-openapi.yml",
-    "loops-so-mailing-lists-api-openapi.yml",
-    "loops-so-themes-api-openapi.yml",
-    "loops-so-transactional-emails-api-openapi.yml",
-    "loops-so-uploads-api-openapi.yml"
+    "_original/loops-openapi.yml"
   ],
   "outputs": [
     "loops-so-api-key-api-openapi.yml",
@@ -31,6 +20,23 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "loops-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "loops-so-api-key-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "loops-so-campaigns-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "loops-so-components-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "loops-so-contact-properties-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "loops-so-contacts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "loops-so-dedicated-sending-ips-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "loops-so-email-messages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "loops-so-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "loops-so-mailing-lists-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "loops-so-themes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "loops-so-transactional-emails-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "loops-so-uploads-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
